@@ -24,11 +24,11 @@ pub struct Cache<T> {
     pub actions: BTreeMap<Uuid, DbAction>
 }
 
-pub trait Db<T, E> {
-    fn get(&mut self, uuid: Uuid) -> Result<T, E>;
-    fn add(&mut self, uuid: Uuid, msg: T, msg_byte_size: u32) -> Result<(), E>;
-    fn del(&mut self, uuid: Uuid) -> Result<(), E>;
-    fn fetch(&mut self) -> Result<Vec<(Uuid, u32)>, E>;
+pub trait Db<T> {
+    fn get(&mut self, uuid: Uuid) -> Result<T, String>;
+    fn add(&mut self, uuid: Uuid, msg: T, msg_byte_size: u32) -> Result<(), String>;
+    fn del(&mut self, uuid: Uuid) -> Result<(), String>;
+    fn fetch(&mut self) -> Result<Vec<(Uuid, u32)>, String>;
 }
 
 #[cfg(test)]
