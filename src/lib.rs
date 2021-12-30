@@ -26,7 +26,7 @@ pub struct Cache<T> {
 
 pub trait Db<T, E> {
     fn get(&mut self, uuid: Uuid) -> Result<T, E>;
-    fn add(&mut self, uuid: Uuid, msg: T) -> Result<(), E>;
+    fn add(&mut self, uuid: Uuid, msg: T, msg_byte_size: u32) -> Result<(), E>;
     fn del(&mut self, uuid: Uuid) -> Result<(), E>;
     fn fetch(&mut self) -> Result<Vec<(Uuid, u32)>, E>;
 }
