@@ -24,7 +24,7 @@ pub struct Cache<T> {
     pub actions: BTreeMap<Uuid, DbAction>
 }
 
-pub trait Db<T> {
+pub trait Db<T>: Send + Sync {
     fn get(&mut self, uuid: Uuid) -> Result<T, String>;
     fn add(&mut self, uuid: Uuid, msg: T, msg_byte_size: u32) -> Result<(), String>;
     fn del(&mut self, uuid: Uuid) -> Result<(), String>;
