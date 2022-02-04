@@ -2,7 +2,7 @@ pub use bytes::Bytes;
 use msg_store::Uuid;
 
 pub trait Db: Send + Sync {
-    fn get<'a>(&mut self, uuid: Uuid) -> Result<Bytes, String>;
+    fn get(&mut self, uuid: Uuid) -> Result<Bytes, String>;
     fn add(&mut self, uuid: Uuid, msg: Bytes, msg_byte_size: u32) -> Result<(), String>;
     fn del(&mut self, uuid: Uuid) -> Result<(), String>;
     fn fetch(&mut self) -> Result<Vec<(Uuid, u32)>, String>;
